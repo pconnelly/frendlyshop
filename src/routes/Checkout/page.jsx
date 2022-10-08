@@ -11,10 +11,10 @@ const Checkout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const finishPurchase = React.useCallback(() => {
+  const finishPurchase = () => {
     dispatch(emptyCart());
     navigate('/');
-  }, [dispatch]);
+  };
 
   return (
     <CommonLayout title="Checkout">
