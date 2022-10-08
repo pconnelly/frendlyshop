@@ -16,9 +16,16 @@ const ProductCard = ({product, columns}) => {
           <p className="card-text">
             {product.description}
           </p>
+          <p className="card-text">
+            {product.price}
+          </p>
+          {product.stock === 0 && (
+            <p className="card-text">
+              Sold out!
+            </p>
+          )}
           <div className='d-flex flex-row'>
-
-            <Link to={{pathname: `/products/${product.id}`}} className="btn btn-primary">Add</Link>
+            <Link to={{pathname: `/products/${product.id}`}} className="btn btn-primary">Details</Link>
           </div>
         </div>
       </div>

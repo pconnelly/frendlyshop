@@ -1,12 +1,19 @@
 import React from 'react';
 import { useParams  } from 'react-router-dom'; 
 import axios from 'axios';
+import { useDispatch } from 'react-redux'
+import { addItem } from '../../store/cartSlice';
+
+
 import CommonLayout from '../../layouts/common/layout';
 
 const Product = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
+
   // const [products, setProducts] = React.useState(null);
   const product = {
+    id: 1,
     name: 'nice dress',
     description: 'a very nice dress',
     price: '500 NOK',
@@ -41,6 +48,8 @@ const Product = () => {
           {/* <span className="sr-only">Next</span> */}
         </a>
       </div>
+      <button type="button" className="align-self-end" onClick={() => dispatch(addItem(product))}>Add to Cart</button>
+      <p>{product.description}</p>
     </CommonLayout>
   );
 };

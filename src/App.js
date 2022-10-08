@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const Home = lazy(() => import('./routes/Home'));
 const Products = lazy(() => import('./routes/Products'));
 const Product = lazy(() => import('./routes/Product'));
+const Checkout = lazy(() => import('./routes/Checkout'));
 const NotFound = lazy(() => import('./routes/NotFound'));
 
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<Product />} />
+          <Route path="/checkout/" element={<Checkout />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

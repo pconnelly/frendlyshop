@@ -1,29 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navbar = ({children, ...props}) => {
+  const cart = useSelector((state) => state.cart);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-      <Link 
-        to={{pathname: '/'}}
-        className="navbar-brand"
-        >
-          Frendly Shop
-      </Link>
+        <Link 
+          to={{pathname: '/'}}
+          className="navbar-brand"
+          >
+            Frendly Shop
+        </Link>
 
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarContents" 
-          aria-controls="navbarContents" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <div>
+          <Link 
+            className="position-relative mx-5"
+            to={{pathname: '/checkout'}}
+          >
+            Cart
+            {cart.count > 0 && (
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+               {cart.count}
+              </span>
+            )}
+          </Link>
+
+          <button 
+            className="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarContents" 
+            aria-controls="navbarContents" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        </div>
 
         <div className="collapse navbar-collapse" id="navbarContents">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
