@@ -11,45 +11,41 @@ const Product = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  // const [products, setProducts] = React.useState(null);
-  const product = {
-    id: 1,
-    name: 'nice dress',
-    description: 'a very nice dress',
-    price: '500 NOK',
-    images: [
-      "https://frend.centraqa.com/client/dynamic/images/91_1061e8dd77-productimages-02-full.jpg",
-      "https://frend.centraqa.com/client/dynamic/images/91_dd2117a556-productimages-03-full.jpg"
-    ]
-  }
+  const [product, setProduct] = React.useState(null);
 
   React.useEffect(() => {
-    axios.get(`/products/${id}`).then((response) => {
-      // setProducts(response.data);
+    axios.get(`https://frend.rest/case/products/${id}`).then((response) => {
+      setProduct(response.data);
     });
   }, [id]);
 
   return (
-    <CommonLayout title={product.name}>
-      <div id="product-carousel" className="carousel slide" data-ride="carousel">
-        <div className="carousel-inner">
-          {product?.images?.map((image, i) => (
-            <div key={i} className="carousel-item active">
-              <img className="d-block w-100" src={image} alt={`Slide ${i + 1}`} />
+    <CommonLayout title={product?.name}>
+      {!product ? (<p>Loading...</p>) : (
+        <>
+          <div id="product-carousel" className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-inner">
+              {product?.images?.map((image, i) => (
+                <div key={i} className={`carousel-item ${i === 0 ? 'active' : ''}`}>
+                  <img className="d-block w-100" src={image} alt={`Slide ${i + 1}`} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          {/* <span className="sr-only">Previous</span> */}
-        </a>
-        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          {/* <span className="sr-only">Next</span> */}
-        </a>
-      </div>
-      <button type="button" className="align-self-end" onClick={() => dispatch(addItem(product))}>Add to Cart</button>
-      <p>{product.description}</p>
+            <button className="carousel-control-prev" type="button" data-bs-target="#product-carousel" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#product-carousel" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div className='d-flex flex-column'>
+            <p>{product.description}</p>
+            <button type="button" className="btn btn-primary align-self-end mt-auto" onClick={() => dispatch(addItem(product))}>Add to Cart</button>
+          </div>
+        </>
+      )}
     </CommonLayout>
   );
 };

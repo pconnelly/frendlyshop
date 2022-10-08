@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import './styles.scss';
+
 const Navbar = ({children, ...props}) => {
   const cart = useSelector((state) => state.cart);
 
@@ -17,7 +19,7 @@ const Navbar = ({children, ...props}) => {
 
         <div>
           <Link 
-            className="position-relative mx-5"
+            className="cart-link__screen-lg position-relative mx-5"
             to={{pathname: '/checkout'}}
           >
             Cart
@@ -53,7 +55,7 @@ const Navbar = ({children, ...props}) => {
           </li>
           <li className="nav-item">
             <Link 
-              to={{pathname: '/products', search: 'dresses'}}
+              to={{pathname: '/products', search: 'category=dresses'}}
               className="nav-link"
               >
                 Dresses
@@ -61,7 +63,7 @@ const Navbar = ({children, ...props}) => {
           </li>
           <li className="nav-item">
             <Link 
-              to={{pathname: '/products', search: 'skirts'}}
+              to={{pathname: '/products', search: 'category=skirts'}}
               className="nav-link"
               >
                 Skirts
@@ -69,13 +71,24 @@ const Navbar = ({children, ...props}) => {
           </li>
           <li className="nav-item">
             <Link 
-              to={{pathname: '/products', search: 'tops'}}
+              to={{pathname: '/products', search: 'category=tops'}}
               className="nav-link"
               >
                 Tops
             </Link>
           </li>
           </ul>
+          <Link 
+            className="position-relative mx-5"
+            to={{pathname: '/checkout'}}
+          >
+            Cart
+            {cart.count > 0 && (
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+               {cart.count}
+              </span>
+            )}
+          </Link>
           <form className="d-flex">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button className="btn btn-outline-success" type="submit">Search</button>
