@@ -21,7 +21,7 @@ const Products = (props) => {
     <CommonLayout title={category}>
       <div className='products--list row gy-5'>
         {products?.map((product) => (
-          <ProductCard columns="col-xs-12 col-sm-6" key={`product-${product.id}`} product={product}/>
+          <ProductCard columns="col-xs-12 col-sm-3" key={`product-${product.id}`} product={product}/>
         ))}
       </div>
     </CommonLayout>
