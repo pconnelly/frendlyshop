@@ -1,11 +1,16 @@
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+// .cart-link__screen-lg {
+//   display: none;
+// }
+// .cart-link__screen-sm {
+//   display: inline;
+// }
 
-.cart-link__screen-lg {
-  display: none;
-}
+// @include media-breakpoint-down(lg) {
+//   .cart-link__screen-lg {
+//     display:inline;
+//   }
 
-@include media-breakpoint-down(lg) {
-  .cart-link__screen-lg {
-    display:inline;
-  }
-}
+//   .cart-link__screen-sm {
+//     display:none;
+//   }
+// }

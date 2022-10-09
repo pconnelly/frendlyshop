@@ -12,14 +12,14 @@ const Navbar = ({children, ...props}) => {
       <div className="container-fluid">
         <Link 
           to={{pathname: '/'}}
-          className="navbar-brand"
+          className="navbar-brand d-lg-inline"
           >
             Frendly Shop
         </Link>
 
         <div>
           <Link 
-            className="cart-link__screen-lg position-relative mx-5"
+            className="cart-link__screen-lg position-relative mx-5 d-lg-none"
             to={{pathname: '/checkout'}}
           >
             Cart
@@ -79,7 +79,7 @@ const Navbar = ({children, ...props}) => {
           </li>
           </ul>
           <Link 
-            className="position-relative mx-5"
+            className="position-relative mx-5 d-none d-lg-inline"
             to={{pathname: '/checkout'}}
           >
             Cart

@@ -65,6 +65,7 @@ export const cartSlice = createSlice({
     },
     emptyCart: (state) => {
       state = {...initialCartState};
+      return state;
     }
   },
 })

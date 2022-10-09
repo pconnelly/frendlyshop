@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from "axios";
 
+import { getProducts } from '../../services/Products';
 import CommonLayout from '../../layouts/common/layout';
 import ProductCard from '../../components/ProductCard/component';
 
@@ -12,7 +12,7 @@ const Products = (props) => {
   const category = search.get('category');
 
   React.useEffect(() => {
-    axios.post('https://frend.rest/case/products', {category}).then((response) => {
+    getProducts(category).then((response) => {
       setProducts(response.data);
     });
   }, [category, search]);

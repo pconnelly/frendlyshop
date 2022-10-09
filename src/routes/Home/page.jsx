@@ -11,7 +11,12 @@ const Home = () => {
           <div className="container-fluid py-5">
             <h1 className="display-5 fw-bold">Frendly Shop</h1>
             <p className="col-md-8 fs-4">Buy something beautiful.</p>
-            <button className="btn btn-primary btn-lg" type="button">Clothing</button>
+            <Link
+              className="btn btn-primary btn-lg"
+              to={{pathname: '/products'}}
+            >
+              All Clothing
+            </Link>
           </div>
         </div>
 

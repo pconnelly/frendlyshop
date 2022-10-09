@@ -1,11 +1,11 @@
 import React from 'react';
-import { useParams  } from 'react-router-dom'; 
-import axios from 'axios';
+import { useParams  } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { addItem } from '../../store/cartSlice';
 
 
 import CommonLayout from '../../layouts/common/layout';
+import { getProduct } from '../../services/Products';
 
 const Product = () => {
   const { id } = useParams();
@@ -14,7 +14,7 @@ const Product = () => {
   const [product, setProduct] = React.useState(null);
 
   React.useEffect(() => {
-    axios.get(`https://frend.rest/case/products/${id}`).then((response) => {
+    getProduct(id).then((response) => {
       setProduct(response.data);
     });
   }, [id]);

@@ -11,7 +11,7 @@ const CommonLayout = ({title, children}) => {
         <Navbar />
       </header>
       <main>
-        <div className='conatiner'>
+        <div className='container'>
           {title && (
             <h1 style={{textTransform: 'capitalize'}}>{title}</h1>
           )}
